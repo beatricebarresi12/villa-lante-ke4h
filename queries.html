@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Semantic Enrichment of Villa Lante</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<center>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="research.html">Research Question</a>
+    <a href="methodology.html">Methodology</a>
+    <a href="queries.html">SPARQL Queries</a>
+    <a href="restoration.html">Prompt Restoration</a>
+    <a href="historicalevents.html">Prompt Historical Events</a>
+    <a href="people.html">Prompt Agents/Authors</a>
+    <a href="RDFtriples.html">RDF Triples</a>
+    <a href="challenges.html">Challenges</a>
+    <a href="team.html">Team</a>
+	  
+	<a href="example01.html">Arco Research </a>
+
+</nav>
+</center>
+
+<div class="container">
+
+
+
+
+
+
+
+
+
+
+<section>
+
+<h1>SPARQL Queries</h1>
+<section id="sparql-villa-lante">
+  <h2>🔎 SPARQL Queries – Villa Lante</h2>
+  <p>
+    This section collects a set of SPARQL queries used to explore data related to
+    <strong>Villa Lante</strong> 
+    through the ARCO knowledge graph.
+  </p>
+
+  <style>
+    #sparql-villa-lante {
+      font-family: Arial, sans-serif;
+      margin: 20px 0;
+    }
+
+    #sparql-villa-lante h2 {
+      margin-bottom: 10px;
+    }
+
+    .query-card {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      margin: 15px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .query-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #38bdf8;
+    }
+
+    pre {
+      background: #111827;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.4;
+      color: #f8fafc;
+    }
+
+    .note {
+      font-size: 13px;
+      opacity: 0.8;
+      margin-bottom: 8px;
+    }
+  </style>
+
+  <!-- QUERY 1 -->
+  <div class="query-card">
+    <div class="query-title">1. Search for resources labeled “Villa Lante”</div>
+    <div class="note">
+      Query to identify all resources whose label contains "Villa Lante".
+    </div>
+    <pre>
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+SELECT DISTINCT ?bene ?label
+WHERE {
+  ?bene rdfs:label ?label .
+  FILTER(REGEX(?label, "Villa Lante", "i"))
+}
+LIMIT 50
+    </pre>
+  </div>
+
+  <!-- QUERY 2 -->
+  <div class="query-card">
+    <div class="query-title">2. Creators and agents of the cultural property</div>
+    <div class="note">
+      Extracts information about authors, architects, and involved institutions.
+    </div>
+    <pre>
+SELECT DISTINCT ?property ?value ?optionalInfo
+WHERE {
+  &lt;https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an&gt;
+    ?property ?value .
+
+  OPTIONAL {
+    ?value ?optionalInfo ?x .
+  }
+
+  FILTER(
+    REGEX(STR(?property),
+    "agent|author|creator|architect|institution",
+    "i")
+  )
+}
+    </pre>
+  </div>
+
+  <!-- QUERY 3 -->
+  <div class="query-card">
+    <div class="query-title">3. Restoration and conservation interventions</div>
+    <div class="note">
+      Filters information related to maintenance, restoration, and preservation activities.
+    </div>
+    <pre>
+SELECT DISTINCT ?property ?value
+WHERE {
+  &lt;https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an&gt;
+    ?property ?value .
+
+  FILTER(
+    REGEX(STR(?property),
+    "restor|conserv|maintenance|repair|preserv",
+    "i")
+  )
+}
+    </pre>
+  </div>
+
+  <!-- QUERY 4 -->
+  <div class="query-card">
+    <div class="query-title">4. Events and related situations</div>
+    <div class="note">
+      Retrieves events or situations associated with the cultural property.
+    </div>
+    <pre>
+SELECT DISTINCT ?property ?value
+WHERE {
+  &lt;https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an&gt;
+    ?property ?value .
+
+  FILTER(
+    REGEX(
+      STR(?property),
+      "event|situation",
+      "i"
+    )
+  )
+}
+    </pre>
+  </div>
+
+<div class="query-card">
+  <div class="query-title">5. Combined view (Agents + Events + Conservation)</div>
+  <div class="note">
+    Unified SPARQL query using UNION to retrieve agents, events, and conservation-related information in a single structured result set.
+  </div>
+
+  <pre>
+SELECT DISTINCT ?property ?value
+WHERE {
+
+  {
+    &lt;https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an&gt;
+      ?property ?value .
+
+    FILTER(
+      REGEX(STR(?property),
+      "agent|author|creator|architect|institution",
+      "i")
+    )
+  }
+
+  UNION
+
+  {
+    &lt;https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an&gt;
+      ?property ?value .
+
+    FILTER(
+      REGEX(STR(?property),
+      "event|situation",
+      "i")
+    )
+  }
+
+  UNION
+
+  {
+    &lt;https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an&gt;
+      ?property ?value .
+
+    FILTER(
+      REGEX(STR(?property),
+      "restor|conserv|maintenance|repair|preserv",
+      "i")
+    )
+  }
+
+}
+  </pre>
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Semantic Enrichment of Villa Lante</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<center>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="research.html">Research Question</a>
+    <a href="methodology.html">Methodology</a>
+    <a href="queries.html">SPARQL Queries</a>
+    <a href="restoration.html">Prompt Restoration</a>
+    <a href="historicalevents.html">Prompt Historical Events</a>
+    <a href="people.html">Prompt Agents/Authors</a>
+    <a href="RDFtriples.html">RDF Triples</a>
+    <a href="challenges.html">Challenges</a>
+    <a href="team.html">Team</a>
+	  
+	<a href="example01.html">Arco Research </a>
+
+</nav>
+</center>
+
+<div class="container">
+
+
+
+
+
+
+
+
+
+
+
+
+<section>
+
+<!-- START OF COMPONENT FOR PROMPT ENGINEERING SECTION -->
+
+<section id="prompt-engineering-villa-lante">
+    <h2>Model Comparison: People Involved in Villa Lante</h2>
+    <p>Analysis of zero-shot responses from ChatGPT and Gemini regarding the key figures involved in the design, construction, patronage, and artistic decoration of Villa Lante in Bagnaia.</p>
+
+    <hr>
+
+    <div class="model-comparison-box" style="margin-bottom: 40px; padding: 20px; border-left: 4px solid #10a37f; background-color: #f7f7f8;">
+        <h3 style="color: #10a37f; margin-top: 0;">Zero-Shot ChatGPT</h3>
+        <p><strong>Prompt:</strong> <em>Identify all people involved in the design, planning, artistic decoration, construction, and patronage of Villa Lante in Bagnaia, Italy.</em></p>
+        
+        <div class="response-content" style="background: #ffffff; padding: 15px; border-radius: 5px; border: 1px solid #e3e3e3;">
+            <p><strong>Answer:</strong> Villa Lante in Bagnaia was the result of a multi-phase collaborative process involving patrons, architects, engineers, and artists operating across the late Renaissance period.</p>
+            
+            <h4>Patronage</h4>
+            <ul>
+                <li>Cardinal Gianfrancesco Gambara (principal patron, initiating the transformation from 1566)</li>
+                <li>Cardinal Alessandro Peretti di Montalto (completion and expansion after 1587)</li>
+                <li>Cardinals Raffaele Riario and Ottaviano Riario (linked to the earlier hunting estate phase)</li>
+            </ul>
+
+            <h4>Design and Construction</h4>
+            <ul>
+                <li>Jacopo Barozzi da Vignola (principal architect and designer of the villa and garden system)</li>
+                <li>Pirro Ligorio (consultant for garden planning and symbolic layout)</li>
+                <li>Tommaso Ghinucci (hydraulic engineering and water system design)</li>
+            </ul>
+
+            <h4>Artistic Decoration</h4>
+            <ul>
+                <li>Giovanni Antonio Paracca (sculptural works, including attribution of the Fountain of the Four Moors)</li>
+                <li>Antonio Tempesta, Agostino Tassi, Giuseppe Cesari, Orazio Gentileschi</li>
+                <li>Workshop circle of Federico Zuccari and Taddeo Zuccari</li>
+            </ul>
+
+            <h4>Synthesis</h4>
+            <p>The villa emerges as a collective Renaissance enterprise integrating papal patronage, architectural planning, hydraulic engineering, and Mannerist artistic production into a unified landscape system.</p>
+        </div>
+    </div>
+
+    <div class="model-comparison-box" style="margin-bottom: 40px; padding: 20px; border-left: 4px solid #1a73e8; background-color: #f8fafd;">
+        <h3 style="color: #1a73e8; margin-top: 0;">Zero-Shot Gemini</h3>
+        
+        <div class="response-content" style="background: #ffffff; padding: 15px; border-radius: 5px; border: 1px solid #e3e3e3;">
+            <p>Villa Lante was developed over more than a century through successive interventions by powerful patrons, architects, engineers, and artists who collectively shaped its Mannerist identity.</p>
+
+            <h4>Patrons and Sponsors</h4>
+            <ul>
+                <li>Cardinal Raffaele Riario (early establishment of the hunting park)</li>
+                <li>Cardinal Niccolò Ridolfi (aqueduct infrastructure project)</li>
+                <li>Cardinal Gianfrancesco Gambara (main transformation and commissioning of Vignola)</li>
+                <li>Cardinal Alessandro Peretti di Montalto (completion of architectural program)</li>
+                <li>Lante Montefeltro della Rovere family (later ownership and preservation)</li>
+            </ul>
+
+            <h4>Architects and Engineers</h4>
+            <ul>
+                <li>Jacopo Barozzi da Vignola (overall architectural and geometric design)</li>
+                <li>Tommaso Ghinucci (hydraulic system and fountains engineering)</li>
+                <li>Pirro Ligorio (consultancy on Renaissance water garden design)</li>
+            </ul>
+
+            <h4>Artistic Decoration</h4>
+            <ul>
+                <li>Antonio Tempesta (fresco cycle direction in Palazzina Gambara)</li>
+                <li>Raffaellino da Reggio, Giovanni de’ Vecchi (interior frescoes)</li>
+                <li>Giuseppe Cesari, Agostino Tassi (Palazzina Montalto decoration)</li>
+                <li>Giambologna workshop (sculptural contributions)</li>
+                <li>Taddeo Landini (attributed sculptural work)</li>
+            </ul>
+
+            <h4>Synthesis</h4>
+            <p>The villa is interpreted as a layered collaborative system in which successive patrons and specialized workshops contributed to an integrated Renaissance landscape, combining political power, hydraulic innovation, and artistic programs.</p>
+        </div>
+    </div>
+<!-- START OF COMPONENT FOR PROMPT ENGINEERING SECTION -->
+
+<section id="prompt-engineering-villa-lante-fewshot">
+    <h2>Model Comparison: Few-Shot Prompting – People Involved in Villa Lante</h2>
+    <p>Analysis of few-shot responses from ChatGPT and Gemini regarding the identification of key figures involved in the conception, design, construction, artistic decoration, and patronage of Villa Lante in Bagnaia.</p>
+
+    <hr>
+
+    <div class="model-comparison-box" style="margin-bottom: 40px; padding: 20px; border-left: 4px solid #10a37f; background-color: #f7f7f8;">
+        <h3 style="color: #10a37f; margin-top: 0;">Few-Shot ChatGPT</h3>
+        <p><strong>Prompt:</strong> <em>Your task is to identify the people involved in the conception, design, construction, artistic decoration, and patronage of a historical site... Apply the same approach to Villa Lante in Bagnaia, Italy.</em></p>
+        
+        <div class="response-content" style="background: #ffffff; padding: 15px; border-radius: 5px; border: 1px solid #e3e3e3;">
+            <p><strong>Answer:</strong> Villa Lante was developed through a multi-layered Renaissance process involving patrons, architects, engineers, and sculptors. While many attributions are well established, some remain partially debated due to incomplete archival documentation.</p>
+
+            <h4>Cardinal Gianfrancesco Gambara (1533–1587)</h4>
+            <p>Principal patron of the project. He converted the former episcopal hunting estate into a structured Renaissance villa and garden complex. He commissioned the first casino (Palazzina Gambara) and defined the symbolic water-based layout. His role is strongly documented in historical sources.</p>
+
+            <h4>Jacopo Barozzi da Vignola (1507–1573)</h4>
+            <p>Traditionally credited as the principal architect of Villa Lante. He is associated with the geometric garden layout, axial water design, and overall spatial conception. However, direct documentary evidence is limited, making some aspects of attribution partially debated among scholars.</p>
+
+            <h4>Tommaso Ghinucci</h4>
+            <p>Hydraulic engineer responsible for designing and supervising the gravity-fed water system that powers fountains, cascades, and channels. His contribution is well documented and central to the functioning of the garden.</p>
+
+            <h4>Cardinal Alessandro Peretti di Montalto (1571–1623)</h4>
+            <p>Second major patron of the villa. He completed the unfinished complex after Gambara’s death, constructing the second casino (Palazzina Montalto) and reinforcing the symmetrical architectural layout of the estate.</p>
+
+            <h4>Giovanni Antonio Paracca (Il Valsoldo)</h4>
+            <p>Sculptor associated with the Fountain of the Four Moors. While widely attributed to him, some scholarly caution remains regarding the exact authorship of specific sculptural elements.</p>
+
+            <h4>Pirro Ligorio and earlier figures</h4>
+            <p>Ligorio is considered a possible advisory influence on garden and hydraulic design. Earlier patrons such as Raffaele Riario, Ottavio Riario, and Niccolò Ridolfi contributed to the initial transformation of the estate into a structured landscape system.</p>
+
+            <p><strong>Synthesis:</strong> The creation of Villa Lante is best understood as a collaborative Renaissance system involving successive patrons and technical specialists, with Gambara, Vignola, Ghinucci, Montalto, and Paracca forming the core identifiable group.</p>
+        </div>
+    </div>
+
+    <div class="model-comparison-box" style="margin-bottom: 40px; padding: 20px; border-left: 4px solid #1a73e8; background-color: #f8fafd;">
+        <h3 style="color: #1a73e8; margin-top: 0;">Few-Shot Gemini</h3>
+        
+        <div class="response-content" style="background: #ffffff; padding: 15px; border-radius: 5px; border: 1px solid #e3e3e3;">
+            <p>Villa Lante is a landmark of Italian Renaissance garden design, characterized by its symmetrical structure and central water axis. Its creation involved a combination of powerful patrons, architects, engineers, and artists.</p>
+
+            <h4>Patrons and Commissioners</h4>
+            <ul>
+                <li><strong>Cardinal Gianfrancesco Gambara (1533–1587):</strong> Principal patron who transformed the estate into a formal water garden and established the first pavilion (Casino Gambara).</li>
+                <li><strong>Cardinal Alessandro Damasceni Peretti di Montalto (1571–1623):</strong> Completed the symmetrical layout by constructing the second pavilion (Casino Montalto) and finishing major decorative works.</li>
+            </ul>
+
+            <h4>Architecture and Engineering</h4>
+            <ul>
+                <li><strong>Jacopo Barozzi da Vignola (1507–1573):</strong> Traditionally credited with the master plan of Villa Lante, especially its dual-pavilion layout and water-centered geometry.</li>
+                <li><strong>Tommaso Ghinucci:</strong> Responsible for the gravity-fed hydraulic system powering the fountains and cascades.</li>
+            </ul>
+
+            <h4>Artistic Decoration</h4>
+            <ul>
+                <li><strong>Taddeo Landini (c. 1561–1596):</strong> Sculptor of the bronze figures of the Fountain of the Moors.</li>
+                <li><strong>Raffaellino da Reggio and Giovanni de’ Vecchi:</strong> Directed fresco decoration in the Casino Gambara.</li>
+                <li><strong>Giuseppe Cesari (1568–1640):</strong> Oversaw fresco cycles in the Casino Montalto.</li>
+            </ul>
+
+            <h4>Historical Context Note</h4>
+            <p>The villa did not originally belong to the Lante family; it acquired its name only in 1656, when it passed to the Lante Montefeltro della Rovere lineage, who preserved the estate over centuries.</p>
+
+            <p><strong>Synthesis:</strong> Villa Lante is the result of a layered collaborative process in which successive patrons and specialized artistic workshops contributed to a unified Renaissance landscape design centered on water, symmetry, and symbolic geometry.</p>
+        </div>
+    </div>
+
+<!-- START OF COMPONENT FOR PROMPT ENGINEERING SECTION -->
+
+<section id="prompt-engineering-villa-lante-cot">
+    <h2>Model Comparison: Chain-of-Thought Prompting – People Involved in Villa Lante</h2>
+    <p>Analysis of chain-of-thought style responses from ChatGPT and Gemini regarding the identification of individuals involved in the conception, design, construction, artistic execution, and later development of Villa Lante in Bagnaia.</p>
+
+    <hr>
+
+    <div class="model-comparison-box" style="margin-bottom: 40px; padding: 20px; border-left: 4px solid #10a37f; background-color: #f7f7f8;">
+        <h3 style="color: #10a37f; margin-top: 0;">Chain-of-Thought ChatGPT</h3>
+        <p><strong>Prompt:</strong> <em>Determine all individuals associated with the conception, design, artistic execution, construction, and later development of Villa Lante in Bagnaia, Italy.</em></p>
+
+        <div class="response-content" style="background: #ffffff; padding: 15px; border-radius: 5px; border: 1px solid #e3e3e3;">
+            <p><strong>Answer:</strong> Villa Lante is reconstructed as a multi-phase project involving successive patronage and technical-artistic contributions across nearly two centuries.</p>
+
+            <h4>Chronological Development Phases</h4>
+            <ul>
+                <li><strong>c.1498–1523:</strong> Early hunting estate (barco) under ecclesiastical control in Bagnaia, associated with initial Riario development.</li>
+                <li><strong>c.1566–1587:</strong> Major transformation under Cardinal Gianfrancesco Gambara, including commissioning of Vignola and establishment of the terraced water garden.</li>
+                <li><strong>1587–c.1610:</strong> Completion phase under Cardinal Alessandro Peretti di Montalto, including the second casino and extended decorative program.</li>
+            </ul>
+
+            <h4>Principal Individuals and Roles</h4>
+            <ul>
+                <li><strong>Raffaele Riario (c.1498, Medium confidence):</strong> Early patron linked to the original hunting preserve.</li>
+                <li><strong>Ottavio Riario (c.1514–1523, Medium confidence):</strong> Expanded and structured the early estate.</li>
+                <li><strong>Niccolò Ridolfi (mid-16th c., Medium confidence):</strong> Promoted hydraulic and landscape improvements.</li>
+                <li><strong>Gianfrancesco Gambara (c.1566–1587, Very High confidence):</strong> Principal commissioner of the Renaissance transformation.</li>
+                <li><strong>Alessandro Peretti di Montalto (1587–c.1610, Very High confidence):</strong> Completion patron responsible for final architectural system.</li>
+            </ul>
+
+            <h4>Architectural and Technical Contributors</h4>
+            <ul>
+                <li><strong>Jacopo Barozzi da Vignola (High confidence):</strong> Main architect associated with overall geometric and garden design.</li>
+                <li><strong>Tommaso Ghinucci (High confidence):</strong> Hydraulic engineer responsible for gravity-fed water system.</li>
+                <li><strong>Pirro Ligorio (Low–Medium confidence):</strong> Possible advisory role in garden conception.</li>
+                <li><strong>Giovanni Antonio Paracca (High confidence):</strong> Sculptor of the Fountain of the Four Moors.</li>
+                <li><strong>Giambologna (Low confidence):</strong> Alternative attribution for sculptural elements, not securely documented.</li>
+            </ul>
+
+            <h4>Final Synthesis</h4>
+            <p>The villa emerges from a layered system of patronage and expertise, with Gambara, Montalto, Vignola, Ghinucci, and Paracca forming the most securely attested core contributors, while earlier Riario figures and other Renaissance artists remain contextually important but less certain in attribution.</p>
+        </div>
+    </div>
+
+    <div class="model-comparison-box" style="margin-bottom: 40px; padding: 20px; border-left: 4px solid #1a73e8; background-color: #f8fafd;">
+        <h3 style="color: #1a73e8; margin-top: 0;">Chain-of-Thought Gemini</h3>
+
+        <div class="response-content" style="background: #ffffff; padding: 15px; border-radius: 5px; border: 1px solid #e3e3e3;">
+            <p>Villa Lante developed through a structured Late Renaissance process in which architectural design, hydraulic engineering, and artistic programs were integrated under successive patronage phases.</p>
+
+            <h4>Development Phases</h4>
+            <ul>
+                <li><strong>Gambara Phase (1566–1587):</strong> Cardinal Gianfrancesco Gambara transformed the estate into a formal water garden, commissioning the first pavilion and defining the terraced structure.</li>
+                <li><strong>Montalto Phase (c.1590–1610s):</strong> Cardinal Alessandro Peretti di Montalto completed the symmetrical twin-pavilion system and reinforced heraldic and decorative programs.</li>
+            </ul>
+
+            <h4>Architectural Attribution</h4>
+            <ul>
+                <li><strong>Jacopo Barozzi da Vignola:</strong> Traditionally credited with the master plan and central water-axis geometry.</li>
+                <li><strong>Giacomo del Duca:</strong> Post-Vignola construction supervisor and late-Mannerist interpreter of the design.</li>
+                <li><strong>Carlo Maderno (debated):</strong> Occasionally attributed to the Montalto pavilion, though not securely documented.</li>
+            </ul>
+
+            <h4>Engineering and Hydraulic System</h4>
+            <ul>
+                <li><strong>Tommaso Ghinucci:</strong> Designed the gravity-fed hydraulic infrastructure powering fountains and cascades.</li>
+            </ul>
+
+            <h4>Artistic Contributors</h4>
+            <ul>
+                <li><strong>Giovanni Antonio Paracca (Il Valsoldo):</strong> Sculptor of the Fountain of the Four Moors.</li>
+                <li><strong>Giuseppe Cesari:</strong> Fresco cycles in the Palazzina Montalto.</li>
+                <li><strong>Agostino Tassi and Tarquinio Ligustri:</strong> Landscape and illusionistic fresco programs.</li>
+            </ul>
+
+            <h4>Final Synthesis</h4>
+            <p>Villa Lante is the product of a highly coordinated system of papal patronage, Renaissance architectural planning, hydraulic engineering innovation, and Mannerist artistic collaboration, resulting in one of the most mathematically structured gardens of the period.</p>
+        </div>
+    </div>
+<!-- SIMILARITIES AND DIFFERENCES TABLE -->
+
+<h2>Similarities and Differences in LLM Performance (Summary Table)</h2>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+    <thead>
+        <tr style="background-color: #f6f8fa;">
+            <th style="padding: 12px; border: 1px solid #dfe2e5; text-align: left; width: 20%;">Category</th>
+            <th style="padding: 12px; border: 1px solid #dfe2e5; text-align: left; width: 40%;">Similarities</th>
+            <th style="padding: 12px; border: 1px solid #dfe2e5; text-align: left; width: 40%;">Differences</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="padding: 12px; border: 1px solid #dfe2e5;"><strong>Structural Organization</strong></td>
+            <td style="padding: 12px; border: 1px solid #dfe2e5;">
+                Both models reconstruct Villa Lante as a multi-phase historical system (early estate → Gambara transformation → Montalto completion).
+            </td>
+            <td style="padding: 12px; border: 1px solid #dfe2e5;">
+                ChatGPT uses a methodological, step-based analytical structure; Gemini uses a thematic narrative flow without explicit procedural breakdown.
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding: 12px; border: 1px solid #dfe2e5;"><strong>Key Figures</strong></td>
+            <td style="padding: 12px; border: 1px solid #dfe2e5;">
+                Strong convergence on core actors: Gambara, Montalto, Vignola, Ghinucci, Paracca.
+            </td>
+            <td style="padding: 12px; border: 1px solid #dfe2e5;">
+                Gemini includes additional attributions (e.g., Giacomo del Duca, Carlo Maderno, Ligustri), while ChatGPT applies stricter selection criteria.
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding: 12px; border: 1px solid #dfe2e5;"><strong>Handling of Uncertainty</strong></td>
+            <td style="padding: 12px; border: 1px solid #dfe2e5;">
+                Both acknowledge that Villa Lante is a collaborative work with partially uncertain authorship.
+            </td>
+            <td style="padding: 12px; border: 1px solid #dfe2e5;">
+                ChatGPT explicitly encodes confidence levels and evidential strength; Gemini does not quantify uncertainty.
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding: 12px; border: 1px solid #dfe2e5;"><strong>Attribution Style</strong></td>
+            <td style="padding: 12px; border: 1px solid #dfe2e5;">
+                Both separate roles into patronage, architecture/engineering, and artistic decoration.
+            </td>
+            <td style="padding: 12px; border: 1px solid #dfe2e5;">
+                ChatGPT prioritizes conservative, evidence-weighted attribution; Gemini expands artistic and architectural networks more freely.
+            </td>
+        </tr>
+
+        <tr>
+            <td style="padding: 12px; border: 1px solid #dfe2e5;"><strong>Interpretive Framing</strong></td>
+            <td style="padding: 12px; border: 1px solid #dfe2e5;">
+                Both frame Villa Lante as a coordinated Renaissance system integrating architecture, hydraulics, and art.
+            </td>
+            <td style="padding: 12px; border: 1px solid #dfe2e5;">
+                ChatGPT emphasizes analytical reconstruction and source caution; Gemini emphasizes narrative coherence and stylistic synthesis.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- END TABLE -->
+
+<!-- REFERENCES SECTION -->
+
+<section id="references-villa-lante">
+    <h2>References</h2>
+
+    <ul>
+        <li><a href="https://www.archeoares.it/visite_guidate/villa-lante-di-bagnaia/" target="_blank">https://www.archeoares.it/visite_guidate/villa-lante-di-bagnaia/</a></li>
+        <li><a href="https://bagnaia.artecitta.it/villa-lante/" target="_blank">https://bagnaia.artecitta.it/villa-lante/</a></li>
+        <li><a href="https://www.italia.it/en/lazio/villa-lante" target="_blank">https://www.italia.it/en/lazio/villa-lante</a></li>
+        <li><a href="https://cultura.gov.it/luogo/villa-lante" target="_blank">https://cultura.gov.it/luogo/villa-lante</a></li>
+        <li><a href="https://www.sgira.org/vigfive.htm" target="_blank">https://www.sgira.org/vigfive.htm</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Villa_Lante" target="_blank">https://en.wikipedia.org/wiki/Villa_Lante</a></li>
+    </ul>
+</section>
+
+<!-- END REFERENCES SECTION -->
+
+<!-- END OF COMPONENT -->
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

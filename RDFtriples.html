@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Semantic Enrichment of Villa Lante</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<center>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="research.html">Research Question</a>
+    <a href="methodology.html">Methodology</a>
+    <a href="queries.html">SPARQL Queries</a>
+    <a href="restoration.html">Prompt Restoration</a>
+    <a href="historicalevents.html">Prompt Historical Events</a>
+    <a href="people.html">Prompt Agents/Authors</a>
+    <a href="RDFtriples.html">RDF Triples</a>
+    <a href="challenges.html">Challenges</a>
+    <a href="team.html">Team</a>
+	  
+	<a href="example01.html">Arco Research </a>
+
+</nav>
+</center>
+
+<div class="container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section>
+
+<section id="restoration-enrichment" style="padding: 25px; margin: 30px 0; background: #f8f9fb; border: 1px solid #e3e3e3; border-radius: 10px;">
+
+  <h2 style="margin-top: 0; color: #222;">
+    Semantic Enrichment – Conservation Intervention
+  </h2>
+
+  <h3 style="color: #333;">Background</h3>
+  <p style="line-height: 1.6; color: #444;">
+    Conservation interventions are an essential part of the history of cultural heritage sites because they document how monuments are preserved, maintained, and adapted over time. Including restoration activities in a knowledge graph improves historical documentation and provides structured information about preservation strategies, stakeholders, and conservation practices.
+  </p>
+
+  <h3 style="color: #333;">Knowledge Gap</h3>
+  <p style="line-height: 1.6; color: #444;">
+    The ArCo record describing Villa Lante does not currently include information about the recent conservation project funded by the Italian National Recovery and Resilience Plan (PNRR). This restoration campaign (2024–2026) is therefore missing from the knowledge graph.
+  </p>
+
+  <ul style="color: #444;">
+    <li>Recent conservation intervention (2024–2026)</li>
+    <li>Funding from the Italian National Recovery and Resilience Plan (PNRR)</li>
+    <li>Detailed restoration activities and environmental surveys</li>
+  </ul>
+
+  <h3 style="color: #333;">Prompt</h3>
+
+  <div style="background: #1e1e1e; color: #f5f5f5; padding: 15px; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 0.9em; line-height: 1.5;">
+<pre style="margin: 0; white-space: pre-wrap;">
+Task
+
+Create a SPARQL CONSTRUCT query that generates RDF triples for enriching the ArCo knowledge graph with information about a conservation intervention related to Villa Lante.
+
+Use SPARQL CONSTRUCT (not INSERT DATA).
+
+Target Cultural Property:
+https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an
+
+Include:
+- restoration 2024–2026
+- hydraulic system reconstruction
+- garden and fountain restoration
+- PNRR funding
+</pre>
+  </div>
+
+  <h3 style="margin-top: 25px; color: #333;">Generated SPARQL CONSTRUCT Query</h3>
+
+  <div style="background: #1e1e1e; color: #f5f5f5; padding: 15px; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 0.9em; line-height: 1.5;">
+<pre style="margin: 0;">
+PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+CONSTRUCT {
+
+  &lt;https://w3id.org/arco/resource/ConservationIntervention/VillaLante_PNRR_2024_2026&gt;
+      a a-cd:ConservationIntervention ;
+      a-cd:isInterventionOn
+      &lt;https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an&gt; ;
+      a-cd:hasActivitySponsor
+      &lt;https://w3id.org/arco/resource/Agent/PNRR&gt; ;
+      rdfs:label "PNRR Restoration of Villa Lante (2024–2026)"@en ;
+      rdfs:comment "Conservation project funded by the Italian National Recovery and Resilience Plan (PNRR). The intervention included restoration of historical fountains and gardens, reconstruction of the hydraulic network, reactivation of water features, flora and fauna survey, and census of approximately 600 trees."@en .
+
+}
+WHERE { }
+</pre>
+  </div>
+
+  <h3 style="margin-top: 25px; color: #333;">Resulting RDF Triples</h3>
+
+  <div style="background: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #e3e3e3; overflow-x: auto;">
+
+    <h4>Namespace Prefixes</h4>
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+      <thead>
+        <tr style="background-color: #f6f8fa;">
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Prefix</th>
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">IRI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">n2</td><td style="padding: 10px; border: 1px solid #ddd;">https://w3id.org/arco/resource/ConservationIntervention/</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">n5</td><td style="padding: 10px; border: 1px solid #ddd;">https://w3id.org/arco/resource/Agent/</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">rdfs</td><td style="padding: 10px; border: 1px solid #ddd;">http://www.w3.org/2000/01/rdf-schema#</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">a-cd</td><td style="padding: 10px; border: 1px solid #ddd;">https://w3id.org/arco/ontology/context-description/</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">rdf</td><td style="padding: 10px; border: 1px solid #ddd;">http://www.w3.org/1999/02/22-rdf-syntax-ns#</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">xsdh</td><td style="padding: 10px; border: 1px solid #ddd;">http://www.w3.org/2001/XMLSchema#</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">n6</td><td style="padding: 10px; border: 1px solid #ddd;">https://w3id.org/arco/resource/CulturalPropertyPart/</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Statements</h4>
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background-color: #f6f8fa;">
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Subject</th>
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Predicate</th>
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Object</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;">n2:VillaLante_PNRR_2024_2026</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">rdf:type</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">a-cd:ConservationIntervention</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;">n2:VillaLante_PNRR_2024_2026</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">rdfs:label</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">PNRR Restoration of Villa Lante (2024–2026)</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;">n2:VillaLante_PNRR_2024_2026</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">rdfs:comment</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">
+            Conservation project funded by the Italian National Recovery and Resilience Plan (PNRR). The intervention included restoration of historical fountains and gardens, reconstruction of the hydraulic network, reactivation of water features, flora and fauna survey, and census of approximately 600 trees.
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;">n2:VillaLante_PNRR_2024_2026</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">a-cd:hasActivitySponsor</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">n5:PNRR</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;">n2:VillaLante_PNRR_2024_2026</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">a-cd:isInterventionOn</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">n6:1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+<section id="rdf-triples" style="padding: 25px; margin: 30px 0; background: #f8f9fb; border: 1px solid #e3e3e3; border-radius: 10px;">
+
+  <h2 style="margin-top: 0; color: #222;">
+    RDF Triples – Historical Event Enrichment (Villa Lante)
+  </h2>
+
+  <p style="line-height: 1.6; color: #444;">
+    This section presents an example of how Large Language Models can be used to generate RDF triples for enriching the
+    ArCo knowledge graph. The output includes both the SPARQL CONSTRUCT query and the resulting RDF statements inferred
+    from the generated graph.
+  </p>
+
+  <hr style="margin: 20px 0; border: none; border-top: 1px solid #ddd;">
+
+  <h3 style="color: #333;">LLM Prompt</h3>
+
+  <div style="background: #1e1e1e; color: #f5f5f5; padding: 15px; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 0.9em; line-height: 1.5;">
+<pre style="margin: 0; white-space: pre-wrap;">
+Task:
+
+You are required to create a SPARQL CONSTRUCT query for enriching the ArCo knowledge graph with information about a historical event related to Villa Lante.
+
+The query must not modify any dataset and must only generate RDF triples compatible with the ArCo ontology.
+
+You must describe a historical event associated with the following cultural property:
+
+https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an
+
+The event concerns the Allied bombing of Villa Lante in 1944 during World War II.
+
+Your task is to return only a SPARQL CONSTRUCT query.
+</pre>
+  </div>
+
+  <h3 style="margin-top: 25px; color: #333;">Generated SPARQL CONSTRUCT Query</h3>
+
+  <div style="background: #1e1e1e; color: #f5f5f5; padding: 15px; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 0.9em; line-height: 1.5;">
+
+<pre style="margin: 0;">
+PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+CONSTRUCT {
+  n2:VillaLante_AlliedBombing_1944
+      a a-cd:Event ;
+      rdfs:label "Allied bombing of Villa Lante (1944)"@en ;
+      rdfs:comment "During World War II, Villa Lante in Bagnaia near Viterbo suffered severe damage due to Allied bombing in 1944. The event damaged architectural structures, gardens, fountains, and landscape elements, significantly affecting the preservation of the site and making extensive restoration necessary in the following decades."@en ;
+      a-cd:isRelatedTo n4:1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an .
+}
+WHERE { }
+</pre>
+
+  </div>
+
+  <h3 style="margin-top: 25px; color: #333;">Resulting RDF Triples</h3>
+
+  <div style="background: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #e3e3e3; overflow-x: auto;">
+
+    <h4>Namespace Prefixes</h4>
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+      <thead>
+        <tr style="background-color: #f6f8fa;">
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Prefix</th>
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">IRI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">rdfs</td><td style="padding: 10px; border: 1px solid #ddd;">http://www.w3.org/2000/01/rdf-schema#</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">a-cd</td><td style="padding: 10px; border: 1px solid #ddd;">https://w3id.org/arco/ontology/context-description/</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">rdf</td><td style="padding: 10px; border: 1px solid #ddd;">http://www.w3.org/1999/02/22-rdf-syntax-ns#</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">n2</td><td style="padding: 10px; border: 1px solid #ddd;">https://w3id.org/arco/resource/Event/</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">xsdh</td><td style="padding: 10px; border: 1px solid #ddd;">http://www.w3.org/2001/XMLSchema#</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">n4</td><td style="padding: 10px; border: 1px solid #ddd;">https://w3id.org/arco/resource/CulturalPropertyPart/</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Statements</h4>
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background-color: #f6f8fa;">
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Subject</th>
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Predicate</th>
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Object</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;">n2:VillaLante_AlliedBombing_1944</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">rdf:type</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">a-cd:Event</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;">n2:VillaLante_AlliedBombing_1944</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">rdfs:label</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">Allied bombing of Villa Lante (1944)</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;">n2:VillaLante_AlliedBombing_1944</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">rdfs:comment</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">
+            During World War II, Villa Lante in Bagnaia near Viterbo suffered severe damage due to Allied bombing in 1944. The event damaged architectural structures, gardens, fountains, and landscape elements, significantly affecting the preservation of the site and making extensive restoration necessary in the following decades.
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;">n2:VillaLante_AlliedBombing_1944</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">a-cd:isRelatedTo</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">n4:1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+<section id="agentrole-enrichment" style="padding: 25px; margin: 30px 0; background: #f8f9fb; border: 1px solid #e3e3e3; border-radius: 10px;">
+
+  <h2 style="margin-top: 0; color: #222;">
+    Semantic Enrichment – Main Contributors
+  </h2>
+
+  <h3 style="color: #333;">Background</h3>
+
+  <p style="line-height: 1.6; color: #444;">
+    Identifying the individuals involved in the creation of cultural heritage sites is essential for representing their historical, artistic, and technical development. These figures include patrons, architects, engineers, sculptors, and artists whose combined contributions define the identity of the monument.
+  </p>
+
+  <h3 style="color: #333;">Knowledge Gap</h3>
+
+  <p style="line-height: 1.6; color: #444;">
+    The ArCo record describing Villa Lante does not explicitly represent in structured form the main historical figures who contributed to its conception, design, and completion between the sixteenth and early seventeenth centuries.
+  </p>
+
+  <h3 style="color: #333;">Task</h3>
+
+  <p style="line-height: 1.6; color: #444;">
+    To address this knowledge gap, we designed a prompt asking the Large Language Model to generate a <strong>SPARQL CONSTRUCT</strong> query capable of proposing RDF triples describing the main contributors to Villa Lante according to the ArCo ontology.
+  </p>
+
+  <h3 style="margin-top: 25px; color: #333;">Generated SPARQL CONSTRUCT Query</h3>
+
+  <div style="background: #1e1e1e; color: #f5f5f5; padding: 15px; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 0.9em; line-height: 1.5;">
+
+<pre style="margin: 0;">
+PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+CONSTRUCT {
+
+  &lt;https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an&gt;
+      core:hasAgentRole
+      &lt;https://w3id.org/arco/resource/AgentRole/VillaLante_MainContributors&gt; .
+
+  &lt;https://w3id.org/arco/resource/AgentRole/VillaLante_MainContributors&gt;
+      a core:AgentRole ;
+      rdfs:label "Main contributors to the creation and development of Villa Lante"@en ;
+      rdfs:comment "Villa Lante was developed through the contributions of several patrons, architects, engineers, sculptors, and painters. Cardinal Gianfrancesco Gambara promoted the transformation of the site into a Renaissance villa and garden complex. Jacopo Barozzi da Vignola is traditionally credited with the architectural design of the villa and gardens. Tommaso Ghinucci designed the hydraulic system that powers the fountains and water features. Cardinal Alessandro Peretti di Montalto completed the project after Gambara's death by expanding the complex and adding new decorative elements. The Fountain of the Four Moors is generally attributed to Giovanni Antonio Paracca (Il Valsoldo). Artistic contributions were also made by Antonio Tempesta, Giuseppe Cesari, and Agostino Tassi. Earlier figures including Raffaele Riario, Ottavio Riario, and Niccolò Ridolfi contributed to the development of the site before the construction of the villa."@en .
+
+}
+WHERE {
+
+  &lt;https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an&gt;
+      rdfs:label ?villaLabel .
+
+}
+</pre>
+
+  </div>
+
+  <h3 style="margin-top: 25px; color: #333;">Resulting RDF Triples</h3>
+
+  <div style="background: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #e3e3e3; overflow-x: auto;">
+
+    <h4>Namespace Prefixes</h4>
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+      <thead>
+        <tr style="background-color: #f6f8fa;">
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Prefix</th>
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">IRI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">rdfs</td><td style="padding: 10px; border: 1px solid #ddd;">http://www.w3.org/2000/01/rdf-schema#</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">n4</td><td style="padding: 10px; border: 1px solid #ddd;">https://w3id.org/arco/resource/AgentRole/</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">rdf</td><td style="padding: 10px; border: 1px solid #ddd;">http://www.w3.org/1999/02/22-rdf-syntax-ns#</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">core</td><td style="padding: 10px; border: 1px solid #ddd;">https://w3id.org/arco/ontology/core/</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">xsdh</td><td style="padding: 10px; border: 1px solid #ddd;">http://www.w3.org/2001/XMLSchema#</td></tr>
+        <tr><td style="padding: 10px; border: 1px solid #ddd;">n2</td><td style="padding: 10px; border: 1px solid #ddd;">https://w3id.org/arco/resource/CulturalPropertyPart/</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Statements</h4>
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr style="background-color: #f6f8fa;">
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Subject</th>
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Predicate</th>
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Object</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;">
+            n2:1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an
+          </td>
+          <td style="padding: 10px; border: 1px solid #ddd;">core:hasAgentRole</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">n4:VillaLante_MainContributors</td>
+        </tr>
+
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;">n4:VillaLante_MainContributors</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">rdf:type</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">core:AgentRole</td>
+        </tr>
+
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;">n4:VillaLante_MainContributors</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">rdfs:label</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">Main contributors to the creation and development of Villa Lante</td>
+        </tr>
+
+        <tr>
+          <td style="padding: 10px; border: 1px solid #ddd;">n4:VillaLante_MainContributors</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">rdfs:comment</td>
+          <td style="padding: 10px; border: 1px solid #ddd;">
+            Villa Lante was developed through the contributions of several patrons, architects, engineers, sculptors, and painters. Cardinal Gianfrancesco Gambara promoted the transformation of the site into a Renaissance villa and garden complex. Jacopo Barozzi da Vignola is traditionally credited with the architectural design of the villa and gardens. Tommaso Ghinucci designed the hydraulic system that powers the fountains and water features. Cardinal Alessandro Peretti di Montalto completed the project after Gambara's death by expanding the complex and adding new decorative elements. The Fountain of the Four Moors is generally attributed to Giovanni Antonio Paracca (Il Valsoldo). Artistic contributions were also made by Antonio Tempesta, Giuseppe Cesari, and Agostino Tassi. Earlier figures including Raffaele Riario, Ottavio Riario, and Niccolò Ridolfi contributed to the development of the site before the construction of the villa.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -255,80 +255,200 @@
                     <p>Villa Lante is the product of a highly coordinated system of papal patronage, Renaissance architectural planning, hydraulic engineering innovation, and Mannerist artistic collaboration, resulting in one of the most mathematically structured gardens of the period.</p>
                 </div>
             </div>
-        </section>
+<section>
 
-        <section id="similarities-differences">
-            <h2>Similarities and Differences in LLM Performance (Summary Table)</h2>
+<h1>SPARQL Queries</h1>
+<section id="sparql-villa-lante">
+  <h2>SPARQL Queries – Villa Lante</h2>
+  <p>
+    This section collects a set of SPARQL queries used to explore data related to
+    <strong>Villa Lante</strong> 
+    through the ARCO knowledge graph.
+  </p>
 
-            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-                <thead>
-                    <tr style="background-color: #f6f8fa;">
-                        <th style="padding: 12px; border: 1px solid #dfe2e5; text-align: left; width: 20%;">Category</th>
-                        <th style="padding: 12px; border: 1px solid #dfe2e5; text-align: left; width: 40%;">Similarities</th>
-                        <th style="padding: 12px; border: 1px solid #dfe2e5; text-align: left; width: 40%;">Differences</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid #dfe2e5;"><strong>Structural Organization</strong></td>
-                        <td style="padding: 12px; border: 1px solid #dfe2e5;">
-                            Both models reconstruct Villa Lante as a multi-phase historical system (early estate → Gambara transformation → Montalto completion).
-                        </td>
-                        <td style="padding: 12px; border: 1px solid #dfe2e5;">
-                            ChatGPT uses a methodological, step-based analytical structure; Gemini uses a thematic narrative flow without explicit procedural breakdown.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid #dfe2e5;"><strong>Key Figures</strong></td>
-                        <td style="padding: 12px; border: 1px solid #dfe2e5;">
-                            Strong convergence on core actors: Gambara, Montalto, Vignola, Ghinucci, Paracca.
-                        </td>
-                        <td style="padding: 12px; border: 1px solid #dfe2e5;">
-                            Gemini includes additional attributions (e.g., Giacomo del Duca, Carlo Maderno, Ligustri), while ChatGPT applies stricter selection criteria.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid #dfe2e5;"><strong>Handling of Uncertainty</strong></td>
-                        <td style="padding: 12px; border: 1px solid #dfe2e5;">
-                            Both acknowledge that Villa Lante is a collaborative work with partially uncertain authorship.
-                        </td>
-                        <td style="padding: 12px; border: 1px solid #dfe2e5;">
-                            ChatGPT explicitly encodes confidence levels and evidential strength; Gemini does not quantify uncertainty.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid #dfe2e5;"><strong>Attribution Style</strong></td>
-                        <td style="padding: 12px; border: 1px solid #dfe2e5;">
-                            Both separate roles into patronage, architecture/engineering, and artistic decoration.
-                        </td>
-                        <td style="padding: 12px; border: 1px solid #dfe2e5;">
-                            ChatGPT prioritizes conservative, evidence-weighted attribution; Gemini expands artistic and architectural networks more freely.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px; border: 1px solid #dfe2e5;"><strong>Interpretive Framing</strong></td>
-                        <td style="padding: 12px; border: 1px solid #dfe2e5;">
-                            Both frame Villa Lante as a coordinated Renaissance system integrating architecture, hydraulics, and art.
-                        </td>
-                        <td style="padding: 12px; border: 1px solid #dfe2e5;">
-                            ChatGPT emphasizes analytical reconstruction and source caution; Gemini emphasizes narrative coherence and stylistic synthesis.
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+  <style>
+    #sparql-villa-lante {
+      font-family: Arial, sans-serif;
+      margin: 20px 0;
+    }
 
-        <section id="references-villa-lante">
-            <h2>References</h2>
-            <ul>
-                <li><a href="https://www.archeoares.it/visite_guidate/villa-lante-di-bagnaia/" target="_blank">https://www.archeoares.it/visite_guidate/villa-lante-di-bagnaia/</a></li>
-                <li><a href="https://bagnaia.artecitta.it/villa-lante/" target="_blank">https://bagnaia.artecitta.it/villa-lante/</a></li>
-                <li><a href="https://www.italia.it/en/lazio/villa-lante" target="_blank">https://www.italia.it/en/lazio/villa-lante</a></li>
-                <li><a href="https://cultura.gov.it/luogo/villa-lante" target="_blank">https://cultura.gov.it/luogo/villa-lante</a></li>
-                <li><a href="https://www.sgira.org/vigfive.htm" target="_blank">https://www.sgira.org/vigfive.htm</a></li>
-                <li><a href="https://en.wikipedia.org/wiki/Villa_Lante" target="_blank">https://en.wikipedia.org/wiki/Villa_Lante</a></li>
-            </ul>
-        </section>
+    #sparql-villa-lante h2 {
+      margin-bottom: 10px;
+    }
+
+    .query-card {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      margin: 15px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .query-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #38bdf8;
+    }
+
+    pre {
+      background: #111827;
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.4;
+      color: #f8fafc;
+    }
+
+    .note {
+      font-size: 13px;
+      opacity: 0.8;
+      margin-bottom: 8px;
+    }
+  </style>
+
+  <!-- QUERY 1 -->
+  <div class="query-card">
+    <div class="query-title">1. Search for resources labeled “Villa Lante”</div>
+    <div class="note">
+      Query to identify all resources whose label contains "Villa Lante".
+    </div>
+    <pre>
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+SELECT DISTINCT ?bene ?label
+WHERE {
+  ?bene rdfs:label ?label .
+  FILTER(REGEX(?label, "Villa Lante", "i"))
+}
+LIMIT 50
+    </pre>
+  </div>
+
+  <!-- QUERY 2 -->
+  <div class="query-card">
+    <div class="query-title">2. Creators and agents of the cultural property</div>
+    <div class="note">
+      Extracts information about authors, architects, and involved institutions.
+    </div>
+    <pre>
+SELECT DISTINCT ?property ?value ?optionalInfo
+WHERE {
+  &lt;https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an&gt;
+    ?property ?value .
+
+  OPTIONAL {
+    ?value ?optionalInfo ?x .
+  }
+
+  FILTER(
+    REGEX(STR(?property),
+    "agent|author|creator|architect|institution",
+    "i")
+  )
+}
+    </pre>
+  </div>
+
+  <!-- QUERY 3 -->
+  <div class="query-card">
+    <div class="query-title">3. Restoration and conservation interventions</div>
+    <div class="note">
+      Filters information related to maintenance, restoration, and preservation activities.
+    </div>
+    <pre>
+SELECT DISTINCT ?property ?value
+WHERE {
+  &lt;https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an&gt;
+    ?property ?value .
+
+  FILTER(
+    REGEX(STR(?property),
+    "restor|conserv|maintenance|repair|preserv",
+    "i")
+  )
+}
+    </pre>
+  </div>
+
+  <!-- QUERY 4 -->
+  <div class="query-card">
+    <div class="query-title">4. Events and related situations</div>
+    <div class="note">
+      Retrieves events or situations associated with the cultural property.
+    </div>
+    <pre>
+SELECT DISTINCT ?property ?value
+WHERE {
+  &lt;https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an&gt;
+    ?property ?value .
+
+  FILTER(
+    REGEX(
+      STR(?property),
+      "event|situation",
+      "i"
+    )
+  )
+}
+    </pre>
+  </div>
+
+<div class="query-card">
+  <div class="query-title">5. Combined view (Agents + Events + Conservation)</div>
+  <div class="note">
+    Unified SPARQL query using UNION to retrieve agents, events, and conservation-related information in a single structured result set.
+  </div>
+
+  <pre>
+SELECT DISTINCT ?property ?value
+WHERE {
+
+  {
+    &lt;https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an&gt;
+      ?property ?value .
+
+    FILTER(
+      REGEX(STR(?property),
+      "agent|author|creator|architect|institution",
+      "i")
+    )
+  }
+
+  UNION
+
+  {
+    &lt;https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an&gt;
+      ?property ?value .
+
+    FILTER(
+      REGEX(STR(?property),
+      "event|situation",
+      "i")
+    )
+  }
+
+  UNION
+
+  {
+    &lt;https://w3id.org/arco/resource/CulturalPropertyPart/1200088359-part-villa-lante-a-bagnaia-monumento-nazionale-v-an&gt;
+      ?property ?value .
+
+    FILTER(
+      REGEX(STR(?property),
+      "restor|conserv|maintenance|repair|preserv",
+      "i")
+    )
+  }
+
+}
+  </pre>
+</div>
+
+
+</section>
+
   <footer>
         <div class="footer-content">
             <h3>Semantic Enrichment of Villa Lante</h3>

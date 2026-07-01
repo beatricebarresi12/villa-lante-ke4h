@@ -265,6 +265,79 @@ pre {
     transform: scale(1.02);
 }
 
+/* ===========================
+   SPARQL RESULTS TABLE
+=========================== */
+
+.table-container{
+    width:100%;
+    overflow-x:auto;
+    margin-top:30px;
+}
+
+#resultsTable{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+#resultsTable th{
+    background:#004080;
+    color:white;
+    padding:14px;
+    text-align:left;
+}
+
+#resultsTable td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+
+    word-break:break-word;
+    overflow-wrap:anywhere;
+    vertical-align:top;
+}
+
+#resultsTable tr:nth-child(even){
+    background:#f5f7fa;
+}
+
+#resultsTable tr:hover{
+    background:#eef4ff;
+}
+
+/* larghezza colonne */
+
+#resultsTable th:nth-child(1),
+#resultsTable td:nth-child(1){
+    width:35%;
+}
+
+#resultsTable th:nth-child(2),
+#resultsTable td:nth-child(2){
+    width:20%;
+}
+
+#resultsTable th:nth-child(3),
+#resultsTable td:nth-child(3){
+    width:45%;
+}
+
+/* link */
+
+#resultsTable a{
+    color:#0056b3;
+    text-decoration:none;
+    word-break:break-all;
+}
+
+#resultsTable a:hover{
+    text-decoration:underline;
+}
+
 /* ==========================================================================
    9. FOOTER
    ========================================================================== */

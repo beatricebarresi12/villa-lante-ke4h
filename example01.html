@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic Enrichment of Villa Lante</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+<header class="top-bar">
+    <a href="index.html" class="logo-link">
+        <img src="images/uniboicona.png" alt="Logo" class="logo">
+    </a>
+    <img src="images/iconamenu.jpg" alt="Menu" class="menu-icon" id="openMenuBtn">
+</header>
+
+<div id="sideMenu" class="side-menu">
+    <a href="javascript:void(0)" class="close-btn" id="closeMenuBtn">&times;</a>
+    <a href="index.html">Home</a>
+    <a href="research.html">Research Question</a>
+    <a href="methodology.html">Methodology</a>
+    <a href="queries.html">SPARQL Queries</a>
+    <a href="restoration.html">Prompt Resroration</a>
+    <a href="historicalevents.html">Prompt Historical Events</a>
+    <a href="people.html">Prompt Agents/Authors</a>
+    <a href="RDFtriples.html">RDF Triples</a>
+    <a href="challenges.html">Challenges</a>
+    <a href="team.html">Team</a>
+    <a href="example01.html" class="active">Arco Research</a>
+</div>
+
+<div class="container">
+
+<section>
+
+    <h1>SPARQL Query on ArCo: Villa Lante</h1>
+
+    <p>
+        This script queries the Italian Cultural Heritage Linked Open Data endpoint (ArCo)
+        to retrieve catalog records that contain “Villa Lante” in their label or description.
+    </p>
+
+    <button id="btnQuery">Run Query on ArCo</button>
+
+    <div id="status"></div>
+
+    <table id="resultsTable" style="display:none;">
+        <thead>
+            <tr>
+                <th>Cultural Property Label</th>
+                <th>Type of Property</th>
+                <th>ArCo Resource URI</th>
+            </tr>
+        </thead>
+
+        <tbody id="resultsBody"></tbody>
+    </table>
+
+<script>
+document.getElementById('btnQuery').addEventListener('click', runSparqlQuery);
+
+async function runSparqlQuery() {
+
+    const statusDiv = document.getElementById('status');
+    const table = document.getElementById('resultsTable');
+    const tbody = document.getElementById('resultsBody');
+
+    statusDiv.style.color = '#666';
+    statusDiv.innerText = 'Querying ArCo knowledge graph... please wait.';
+    tbody.innerHTML = '';
+    table.style.display = 'none';
+
+    const endpointUrl = 'https://dati.beniculturali.it/sparql';
+
+    const sparqlQuery = `
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+        SELECT DISTINCT ?culturalProperty ?label ?type WHERE {
+            ?culturalProperty rdfs:label ?label .
+            ?culturalProperty rdf:type ?type .
+
+            FILTER (regex(str(?label), "Villa Lante", "i"))
+        }
+        LIMIT 50
+    `;
+
+    const fullUrl = endpointUrl + '?query=' + encodeURIComponent(sparqlQuery) + '&format=json';
+
+    try {
+        const response = await fetch(fullUrl);
+
+        if (!response.ok) {
+            throw new Error(`ArCo error: ${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        const bindings = data.results.bindings;
+
+        if (!bindings || bindings.length === 0) {
+            statusDiv.style.color = 'orange';
+            statusDiv.innerText = "No results found for 'Villa Lante'.";
+            return;
+        }
+
+        bindings.forEach(row => {
+
+            const tr = document.createElement('tr');
+
+            // Label
+            const tdLabel = document.createElement('td');
+            tdLabel.innerText = row.label.value;
+            tr.appendChild(tdLabel);
+
+            // Type
+            const tdType = document.createElement('td');
+            const typeUri = row.type.value;
+            const typeClean = typeUri.substring(typeUri.lastIndexOf('/') + 1);
+            tdType.innerText = typeClean;
+            tr.appendChild(tdType);
+
+            // URI
+            const tdUri = document.createElement('td');
+            const link = document.createElement('a');
+            link.href = row.culturalProperty.value;
+            link.target = '_blank';
+            link.innerText = row.culturalProperty.value;
+            tdUri.appendChild(link);
+            tr.appendChild(tdUri);
+
+            tbody.appendChild(tr);
+        });
+
+        statusDiv.style.color = 'green';
+        statusDiv.innerText = `Success: ${bindings.length} results found for Villa Lante.`;
+        table.style.display = 'table';
+
+    } catch (error) {
+        console.error(error);
+        statusDiv.style.color = 'red';
+        statusDiv.innerText = "Error retrieving data from ArCo: " + error.message;
+    }
+}
+</script>
+
+</section>
+
+<footer>
+    <div class="footer-content">
+        <h3>Semantic Enrichment of Villa Lante</h3>
+        <p>Project for Knowledge Engineering and Computation for the Humanities Course.</p>
+        <p><strong>Contatti:</strong> <a href="mailto:info@tuamail.it">davide.arena5@studio.unibo.it</a> | <a href="mailto:info@tuamail.it">beatrice.barresi@studio.unibo.it</a> | <a href="mailto:info@tuamail.it">sara.lancia2@studio.unibo.it</a> | <a href="mailto:info@tuamail.it">alice.sabbatini2@studio.unibo.it</a> | </p>
+        <p>&copy; 2026 Arco Knowledge Graph Enhancement. Tutti i diritti riservati.</p>
+    </div>
+</footer>
+
+<script>
+    const sideMenu = document.getElementById("sideMenu");
+    const openBtn = document.getElementById("openMenuBtn");
+    const closeBtn = document.getElementById("closeMenuBtn");
+
+    // Apre il menu
+    openBtn.addEventListener("click", (e) => {
+        sideMenu.style.left = "0";
+        e.stopPropagation(); // Evita che il clic di apertura venga subito letto dal document
+    });
+
+    // Chiude il menu dal pulsante (X)
+    closeBtn.addEventListener("click", () => {
+        sideMenu.style.left = "-250px";
+    });
+
+    // Chiude il menu cliccando in qualsiasi punto fuori
+    document.addEventListener("click", (e) => {
+        // Se il clic NON avviene dentro il menu a scomparsa e il menu è attualmente aperto
+        if (!sideMenu.contains(e.target) && sideMenu.style.left === "0px") {
+            sideMenu.style.left = "-250px";
+        }
+    });
+</script>
+
+</body>
+</html>

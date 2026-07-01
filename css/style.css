@@ -1,0 +1,298 @@
+/* ==========================================================================
+   1. RESET E LAYOUT (FLEXBOX PER FOOTER IN FONDO)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Necessario per far scendere il footer */
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #e0e1e4;
+    color: #333;
+    line-height: 1.7;
+    display: flex;
+    flex-direction: column; /* Impila Header, Main e Footer verticalmente */
+}
+
+main {
+    flex: 1; /* Il main prende tutto lo spazio vuoto, spingendo il footer in basso */
+}
+
+/* ==========================================================================
+   2. CONTENITORI PRINCIPALI E SEZIONI
+   ========================================================================== */
+.container {
+    width: 75%;
+    margin: 20px auto;
+}
+
+section {
+    background: rgb(250, 248, 243);
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.1);
+}
+
+/* ==========================================================================
+   3. TIPOGRAFIA ED ELEMENTI STANDARD
+   ========================================================================== */
+h1, h2 {
+    text-align: center;
+}
+
+h1 {
+    color: #0d3b66;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #1d3557;
+    margin-bottom: 15px;
+}
+
+h1::first-letter, h2::first-letter {
+    color: #ffd166;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+table th {
+    background: #0d3b66;
+    color: white;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* ==========================================================================
+   4. BARRA SUPERIORE E LOGO
+   ========================================================================== */
+.top-bar {
+    background: #0d3b66;
+    padding: 15px 30px; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;            
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    margin: 0 auto 10px auto;
+    width: 75%;
+    border-radius: 0 0 12px 12px;
+}
+
+.logo {
+    height: 85px; 
+    width: auto;
+}
+
+/* ==========================================================================
+   5. ICONA MENU (E ANIMAZIONE DOPPIO BATTITO)
+   ========================================================================== */
+.menu-icon {
+    height: 60px; 
+    width: auto;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.menu-icon:hover {
+    transform: scale(1.1); 
+}
+
+.menu-icon.pulsing {
+    animation: heartbeat 5s infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    4% { transform: scale(1.3); }  
+    8% { transform: scale(1); }    
+    12% { transform: scale(1.3); } 
+    16% { transform: scale(1); }   
+    100% { transform: scale(1); }  
+}
+
+/* ==========================================================================
+   6. MENU LATERALE A SCOMPARSA
+   ========================================================================== */
+.side-menu {
+    height: 100vh;
+    width: 250px; 
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: -250px; 
+    background-color: #0d3b66;
+    overflow-x: hidden;
+    transition: 0.3s ease; 
+    padding-top: 80px;     
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+}
+
+.side-menu a {
+    padding: 15px 30px; 
+    text-decoration: none;
+    font-size: 18px; 
+    color: white;
+    display: block;
+    transition: 0.2s;
+    font-weight: 600;
+}
+
+.side-menu a:hover,
+.side-menu a.active {
+    color: #ffd166;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.side-menu .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 36px;
+    padding: 5px;
+}
+
+/* ==========================================================================
+   7. STILI PER CODICE (QUERY SPARQL)
+   ========================================================================== */
+pre {
+    background: #111827; 
+    color: #f8fafc;
+    padding: 15px;
+    overflow-x: auto;
+    border-radius: 8px;
+    font-family: 'Consolas', 'Monaco', monospace; 
+    line-height: 1.5;
+}
+
+.query-card {
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.query-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #38bdf8;
+    display: block;
+}
+
+.query-note {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+/* ==========================================================================
+   8. SEZIONE TEAM
+   ========================================================================== */
+.team-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f7f7fb, #eef1f7);
+}
+
+.team-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.team-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #1d3557; 
+}
+
+.team-intro {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.team-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 15px;
+    text-align: left; 
+}
+
+.team-image {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.team-image img {
+    width: 100%;
+    max-width: 650px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.team-image img:hover {
+    transform: scale(1.02);
+}
+
+/* ==========================================================================
+   9. FOOTER
+   ========================================================================== */
+footer {
+    background: #0d3b66;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: auto; /* Questo spinge il footer verso il basso grazie al Flexbox! */
+    border-radius: 12px 12px 0 0;
+}
+
+.footer-content h3 {
+    color: #ffd166; 
+    margin-bottom: 10px;
+}
+
+.footer-content p {
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.footer-content a {
+    color: #ffd166;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-content a:hover {
+    text-decoration: underline;
+}
